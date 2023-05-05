@@ -1,0 +1,16 @@
+<div class="site-right col-4 m-0 d-flex flex-column align-items-center w-100">
+    {{#if user}}
+    <h3 class="heading-genre align-self-start mt-4">Cùng nghe nhạc nào!</h3>
+    <div class="playlist w-100 rounded mt-3 px-3 d-flex flex-column">
+        {{!-- music list --}}
+    </div>
+    {{> player}}
+    {{else}}
+    <h3 class="heading-genre align-self-start mt-4">Đăng nhập để được trãi nghiệm tốt hơn!</h3>
+    <div class="playlist w-100 rounded mt-3 px-3 d-flex flex-column">
+        {{!-- music list --}}
+    </div>
+    {{> player}}
+
+    {{/if}}
+</div>

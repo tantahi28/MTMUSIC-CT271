@@ -1,0 +1,98 @@
+<div class="mt-4">
+    <h3>Bài hát của tôi</h3>
+    <a href="/me/trash/songs">Thùng rác</a>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên bài hát</th>
+                <th scope="col">Tên ca sĩ</th>
+                <th scope="col">Thời gian tạo</th>
+                <th scope="col" colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#if user.isAdmin}}
+            {{#each songs}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.songName}}</td>
+                <td>{{this.singerName}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href="/songs/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    <a href="/songs" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-song-modal">Xóa</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Bạn chưa đăng bài hát nào. <a href="/songs/create">Thêm bài hát mới!</a>
+                </td>
+            </tr>
+            {{/each}}
+        {{else}}
+            {{#each songs}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.songName}}</td>
+                <td>{{this.singerName}}</td>
+                <td>{{this.createdAt}}</td>
+                <td>
+                    <a href="/songs" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-song-modal">Xóa</a>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="5" class="text-center">
+                    Bạn chưa đăng bài hát nào. <a href="/songs/create">Thêm bài hát mới!</a>
+                </td>
+            </tr>
+            {{/each}}
+        {{/if}}
+        </tbody>
+</table>
+</div>
+
+{{!-- Confirm delete song --}}
+<div id="delete-song-modal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xóa bài hát?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xóa bài hát này?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-song" type="button" class="btn btn-danger">Xóa bỏ</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- Delete hidden form --}}
+<form name="delete-song-form" method="POST"></form>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var songId
+        var deleteForm = document.forms['delete-song-form']
+        var btnDeleteSong = document.getElementById('btn-delete-song')
+        //When dialog confirm click
+        $('#delete-song-modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) 
+        songId = button.data('id') 
+    })
+
+    btnDeleteSong.onclick = function() {
+        deleteForm.action = '/songs/' + songId + '/soft?_method=DELETE'
+        deleteForm.submit();
+    }
+})
+</script>

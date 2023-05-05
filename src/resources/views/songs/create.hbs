@@ -1,0 +1,82 @@
+{{!-- <div class="mt-4">
+    <h3>Đăng bài hát</h3>
+    <form method="POST" action="/songs/store">
+        <div class="form-group">
+            <label for="songName">Tên bài hát</label>
+            <input type="text" class="form-control" id="songName" name="songName" required>
+        </div>
+        <div class="form-group">
+            <label for="urlImg">Đường dẫn hình ảnh bài hát</label>
+            <input type="text" class="form-control" id="urlImg" name="urlImg" required>
+        </div>
+        <div class="form-group">
+            <label for="urlSong">Đường dẫn bài hát</label>
+            <input type="text" class="form-control" id="urlSong" name="urlSong" required>
+        </div>
+        <div class="form-group">
+            <label for="singerName">Tên ca sĩ</label>
+            <input type="text" class="form-control" id="singerName" name="singerName" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Thể loại nhạc</label>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="pop" name="genre" value="pop" required>
+                <label class="form-check-label" for="pop">Pop</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="bolero" name="genre" value="bolero" required>
+                <label class="form-check-label" for="bolero">Bolero</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="rap" name="genre" value="rap" required>
+                <label class="form-check-label" for="rap">Rap</label>
+            </div>
+
+            <!-- Add more checkboxes for other genres -->
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Thêm bài hát</button>
+    </form>
+</div> --}}
+
+<div class="mt-4">
+    <h3>Đăng bài hát</h3>
+    <form method="POST" action="/songs/store" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="songName">Tên bài hát</label>
+            <input type="text" class="form-control" id="songName" name="songName" required>
+        </div>
+        <div class="form-group">
+            <label for="urlImg">Đường dẫn hình ảnh bài hát</label>
+            <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="urlImg" name="urlImg" >
+            {{!-- <input type="text" class="form-control" id="urlImg" name="urlImg" required> --}}
+        </div>
+        <div class="form-group">
+            <label for="urlSong">Đường dẫn bài hát</label>
+            <input type="file" accept=".mp3,audio/*" class="form-control" id="urlSong" name="urlSong" >
+        </div>
+        <div class="form-group">
+            <label for="singerName">Tên ca sĩ</label>
+            <input type="text" class="form-control" id="singerName" name="singerName" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Thể loại nhạc</label>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="pop" name="genre" value="pop" required>
+                <label class="form-check-label" for="pop">Pop</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="bolero" name="genre" value="bolero" required>
+                <label class="form-check-label" for="bolero">Bolero</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="rap" name="genre" value="rap" required>
+                <label class="form-check-label" for="rap">Rap</label>
+            </div>
+
+            <!-- Add more checkboxes for other genres -->
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Thêm bài hát</button>
+    </form>
+</div>

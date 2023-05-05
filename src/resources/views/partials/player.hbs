@@ -1,0 +1,44 @@
+<h3 class="align-self-start mt-4">Now playing</h3>
+<div class="player w-100 mt-3 px-4 py-4 d-flex justify-content-center">
+    <div class="dashboard w-75 p-1 d-flex align-items-center flex-column">
+        <div class="music-header text-center">
+            <h4 class="music-name pt-3 font-weight-bold d-block">Bạn chưa chọn bản nhạc nào </h4>
+            <h6 class="artist d-block">Artist</h6>
+        </div>
+        <div class="cd w-50 justify-items-center">
+            <div id="#cd__thumb" class="cd__thumb my-3 rounded-circle" style="background-image: url('http://localhost:3000/img/logo.png');"></div>
+        </div>
+        <div class="control justify-content-center">
+            
+            <audio id="myAudio">
+                <source src="" type="audio/mpeg">
+            </audio>
+                <!-- ========== BUTTON CONTROL ========== -->
+            <div class="ctrl__btn  d-flex justify-content-center flex-nowrap">
+                <!-- ========== BUTTON REPEAT ========== -->
+                <div class="btn ctrl__btn--repeat">
+                    <i class="fa-solid fa-repeat"></i>
+                </div>
+                <!-- ========== BUTTON PREV ========== -->
+                <div onclick="playPrevSong()" class="btn ctrl__btn--prev">
+                    <i class="fa-solid fa-backward-step"></i>
+                </div>
+                <!-- ========== BUTTON PLAY / PAUSE ========== -->
+                <div class="btn ctrl__btn--toggle--play">
+                    <i class="playing icon-play fa-solid fa-play"></i>
+                    <i class="icon-pause fa-solid fa-pause d-none"></i>
+                </div>
+                <!-- ========== BUTTON NEXT ========== -->
+                <div onclick="playNextSong()" class="btn ctrl__btn--next">
+                    <i class="fa-solid fa-forward-step"></i>
+                </div>
+                <!-- ========== BUTTON RANDOM ========== -->
+                <div class="btn ctrl__btn--random">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

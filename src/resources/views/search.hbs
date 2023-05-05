@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tìm kiếm bài hát và ca sĩ</title>
+</head>
+<body>
+    <h1>Tìm kiếm bài hát và ca sĩ</h1>
+    {{#if songs}}
+        <div class="row">
+
+            {{#each songs}}
+            <div class="media col-sm-6 col-md-4 d-flex justify-content-center ">
+                <a class="media-container" data-songId={{this._id}} onclick="getSongInfo('{{this._id}}')">
+                    <div class="media-left">
+                        <div style="background-image: url('{{this.urlImg}}')" class="song-thumb"></div>
+                        <div class="card-body">
+                            <h3 class="titile">{{this.songName}}</h3>
+                            <p class="author">{{this.singerName}}</p>   
+                        </div>
+                    </div>
+                    <div class="media-right">
+                        <div class="media-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{#if @index_mod_4_eq_3}}
+            </div><div class="row">
+            {{/if}}
+            {{/each}}
+        </div>
+    {{else}}
+        <p>Không tìm thấy bài hát phù hợp.</p>
+    {{/if}} 
+</body>
+</html>

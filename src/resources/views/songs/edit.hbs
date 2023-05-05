@@ -1,0 +1,56 @@
+{{!-- <div class="mt-4">
+        <h3>Đăng khóa học</h3>
+        <form method="POST" enctype="multipart/form-data" action="/songs/{{song._id}}?_method=PUT">
+            <div class="form-group">
+                <label for="songName">Tên bài hát</label>
+                <input type="text" class="form-control" value="{{song.songName}}" id="songName" name="songName" required>
+            </div>
+            <div class="form-group">
+                <label for="urlImg">Đường dẫn ảnh bài hát</label>
+                <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="urlImg" name="urlImg" >
+            </div>
+            <div class="form-group">
+                <label for="urlSong">Đường dẫn bài hát</label>
+            <input type="file" accept=".mp3,audio/*" class="form-control" id="urlSong" name="urlSong" >
+            </div>
+            <div class="form-group">
+                <label for="singerName">Tên ca sĩ</label>
+                <input type="text" class="form-control" value="{{song.singerName}}" id="singerName" name="singerName" required>
+            </div>
+            <div class="form-group">
+                <label for="genre">Thể loại nhạc</label>
+                <input type="text" class="form-control" value="{{song.genre}}" id="genre" name="genre" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Lưu lại</button>
+        </form>
+</div> --}}
+
+<div class="mt-4">
+    <h3>Chỉnh sửa bài hát</h3>
+    <form method="POST" enctype="multipart/form-data" action="/songs/{{song._id}}?_method=PUT">
+        <div class="form-group">
+            <label for="songName">Tên bài hát</label>
+            <input type="text" class="form-control" value="{{song.songName}}" id="songName" name="songName" required>
+        </div>
+        <div class="form-group">
+            <label for="urlImg">Thay đổi ảnh bài hát</label>
+            <img src="{{song.urlImg}}" alt="{{song.songName}}"  style="max-width: 200px; margin:5px 0 5px 0 ; display: block;">
+            <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" id="urlImg" name="urlImg" >
+        </div>
+        <div class="form-group">
+            <label for="urlSong" style="display: block;">Thay đổi file nhạc</label>
+            <audio controls src="{{song.urlSong}}" style="margin-top: 10px;"></audio>
+            <input type="file" accept=".mp3,audio/*" class="form-control" id="urlSong" name="urlSong" >
+        </div>
+        <div class="form-group">
+            <label for="singerName">Tên ca sĩ</label>
+            <input type="text" class="form-control" value="{{song.singerName}}" id="singerName" name="singerName" required>
+        </div>
+        <div class="form-group">
+            <label for="genre">Thể loại nhạc</label>
+            <input type="text" class="form-control" value="{{song.genre}}" id="genre" name="genre" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu lại</button>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<header class="header py-3 row m-0 position-relative">
+    <div class="header__tool col-8 px-4 d-flex flex-nowrap align-items-center ">
+        <form action="http://localhost:3000/search" method="GET" class="w-100 rounded-pill header__search--form">
+        <input class="header__tool--search w-100 rounded-pill px-3 py-3" type="search" name="q" id="search" placeholder="Search, Songs, Album, Artists..." required>
+        <button type="submit" id="search-submit" class="header__search--submit">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        </form>
+        <div class="header__tool-noti pl-3">
+            <button class="px-2 bg-transparent border-0" href=""><i class="fa fa-bell" aria-hidden="true"></i></button>
+        </div>
+     </div>
+    <div class="header__info col-4 d-flex justify-content-end align-items-center">
+        {{#if user}}
+        <a href="http://localhost:3000/auth/login" class="header__info-box d-flex align-items-center">
+            <h4 class="header__info-username pr-3 font-weight-bolder">
+                {{user.name}}
+            </h4>
+            {{#if user.urlAvt}}
+             <img src="{{user.urlAvt}}" alt="User avt img" class="header__info-userimg img-fluid">
+            {{else}}
+             <img src="http://localhost:3000/img/logo.png" alt="User avt img" class="header__info-userimg img-fluid">
+            {{/if}}
+        </a>
+        {{else}}
+        <a href="http://localhost:3000/auth/login" class="header__info-box d-flex align-items-center">
+            <h4 class="header__info-username pr-3 font-weight-bolder">
+                ĐĂNG NHẬP
+            </h4>
+             <img src="http://localhost:3000/img/logo.png" alt="User avt img" class="header__info-userimg img-fluid">
+        </a>
+        {{/if}}
+    </div>
+</header>
+

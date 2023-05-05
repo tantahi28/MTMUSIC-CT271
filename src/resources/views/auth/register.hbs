@@ -1,0 +1,51 @@
+
+
+<div class="container">
+    <h1>Đăng ký tài khoản mới</h1>
+    <form method="POST" action="/auth/store">
+     {{#if conflictError}}
+            <div class="alert alert-danger">{{conflictError}}</div>
+        {{/if}}
+        <div class="form-group">
+            <label for="email">Nhập email:</label>
+            <input type="email" class="form-control form-control-lg rounded" id="email" name="email" value="{{email}}" required>
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không tiếc lộ email của bạn cho bất cứ ai!</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Nhập Mật khẩu <span class="font-italic small">(ít nhất 8 ký tự số, chữ thường và in hoa):</span></label>
+            <input type="password" class="form-control form-control-lg rounded" name="password" minlength="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
+        </div>
+        <div class="form-group">
+            <label for="password-confirm">Nhập lại mật khẩu:</label>
+            <input type="password" class="form-control form-control-lg rounded" id="password-confirm" name="password-confirm" minlength="8" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Nhập tên hiển thị:</label>
+            <input type="text" class="form-control form-control-lg rounded" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="urlAvt">Nhập đường dẫn hình ảnh cho avt:</label>
+            <input type="text" maxlength="15" class="form-control form-control-lg rounded" id="urlAvt" name="urlAvt">
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+    </form>
+</div>
+
+
+<script>
+    const password = document.querySelector('input[name="password"]');
+    const confirmPassword = document.querySelector('input[name="password-confirm"]');
+    console.log(password, confirmPassword)
+    function validatePassword() {
+    if (password.value !== confirmPassword.value) {
+        confirmPassword.setCustomValidity("Mật khẩu không khớp");
+    } else {
+        confirmPassword.setCustomValidity('');
+    }
+    }
+
+    password.addEventListener('change', validatePassword);
+    confirmPassword.addEventListener('keyup', validatePassword);
+
+
+</script>

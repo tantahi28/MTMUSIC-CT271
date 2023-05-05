@@ -1,0 +1,41 @@
+
+
+<div class="mt-4">
+    <div class="container">
+        {{> slider}}
+        <h2 class="mt-4 mb-4 font-weight-bolder"> <span class="font-weight-light">></span> Poppular song</h2>
+        <div class="row popular-song">
+            {{#each songs}}
+            <div class="media col-sm-6 col-md-4 d-flex justify-content-center ">
+                <a class="media-container" data-songId={{this._id}} onclick="getSongInfo('{{this._id}}')">
+                    <div class="media-left">
+                        <div style="background-image: url('{{this.urlImg}}')" class="song-thumb"></div>
+                        <div class="card-body">
+                            <h3 class="titile">{{this.songName}}</h3>
+                            <p class="author">{{this.singerName}}</p>   
+                        </div>
+                    </div>
+                    <div class="media-right">
+                        <div class="media-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {{#if @index_mod_4_eq_3}}
+            </div><div class="row">
+            {{/if}}
+            {{/each}}   
+        </div>
+    </div>
+</div>
+<script>
+    
+document.querySelector('.media-right').addEventListener('click', function(event) {
+  event.stopPropagation(); // Ngăn chặn sự kiện click từ bubble lên các phần tử cha
+});
+
+</script>
+
+
+

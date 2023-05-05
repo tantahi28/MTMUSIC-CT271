@@ -1,0 +1,46 @@
+{{!-- <div class="container">
+    <div class="mt-4">
+        <h3 class="text-center">Đăng nhập</h3>
+        <form method="POST" action="/auth/logging">
+        <div class="form-group">
+            <label for="email">Nhập email </label>
+            <input type="email" class="form-control form-control-lg rounded" id="email" name="email" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không tiếc lộ email của bạn cho bất cứ ai!</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Nhập mật khẩu</label>
+            <input type="password" class="form-control form-control-lg rounded" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="Đăng nhập" class="btn btn-primary">Đăng nhập</button>
+        </form>
+        <div class="mt-4 d-flex justify-content-between">
+            <a href="/google">Đăng nhập bằng tài khoản Google</a>
+            <a href="/auth/register">Đăng ký tài khoản mới</a>
+        </div>
+    </div>
+</div> --}}
+
+<div class="container">
+    <div class="mt-4">
+        <h3 class="text-center">Đăng nhập</h3>
+        <form method="POST" action="/auth/logging">
+        {{#if conflictError}}
+            <div class="alert alert-danger">{{conflictError}}</div>
+        {{/if}}
+        <div class="form-group">
+            <label for="email">Nhập email </label>
+            <input type="email" class="form-control form-control-lg rounded" value="{{email}}" id="email" name="email" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không tiếc lộ email của bạn cho bất cứ ai!</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Nhập mật khẩu</label>
+            <input type="password" class="form-control form-control-lg rounded" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+        </form>
+        <div class="mt-4 d-flex justify-content-between">
+            <a href="/google">Đăng nhập bằng tài khoản Google</a>
+            <a href="/auth/register">Đăng ký tài khoản mới</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MTMusic</title>
+        <link rel="shortcut icon" href="http://localhost:3000/img/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+        />
+        <link rel="stylesheet" href="/css/app.css">
+    </head>
+    <body>
+        <div class="wrapper no-gutters row">
+            {{> site-left}}
+
+            <div class="col-10 site-main">
+                {{> header}}
+                <main class="row main__center m-0 h-100">
+                    <div class="col-8 m-0">
+                        {{{body}}}
+                    </div>
+                    <div class="col-4"></div>
+                    {{> site-right}}
+                </main>
+            </div>
+            
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="http://localhost:3000/js/player.js"></script>
+        <script>
+                const currentSongInfo = JSON.parse(sessionStorage.getItem('currentSongInfo'));
+                getSongInfo(currentSongInfo._id);
+                //Xử lý khi chuyển trang thì nhạc dừng
+                setTimeout(function() {
+                    player.pause();
+                }, 50); // đợi 0.05 giây (50 milliseconds)
+                // Khởi tạo đối tượng cdThumbAnimate
+                var cdThumbAnimate = cdThumb.animate([{ transform: 'rotate(360deg)' }], {
+                    duration: 10000,
+                    iterations: Infinity,
+                    easing: 'linear',
+                });
+                cdThumbAnimate.pause();
+                player.on('play', () => {
+                if (player.source === null) return; // Nếu không có source thì không quay CD
+                    cdThumbAnimate.play();
+                });
+                player.on('pause', () => {
+                    cdThumbAnimate.pause();
+                });
+
+                player.on('ended', () => {
+                    if (player.source === null) return;
+                    cdThumbAnimate.pause();
+                    cdThumbAnimate.currentTime = 0;
+                });
+                //Xử lý next song khi audio ended
+                player.on('ended', () => {
+                    if ((!player.repeat && !player.random) || !player.repeat) {
+                        nextBtn.click();
+                    }
+                });
+
+                //Xử lý khi repeat song
+                player.on('ended', function (event) {
+                    if (player.repeat) {
+                        player.play(); // Chạy lại bài hát nếu repeat được bật
+                    }
+                });
+                btnRepeat.click(function () {
+                    player.repeat = !player.repeat; // Bật/tắt repeat
+                    btnRepeat.toggleClass('active', player.repeat); // Thêm/xóa class active để highlight nút repeat
+                });
+
+                randomBtn.click(function () {
+                    player.random = !player.random; // Bật/tắt random
+                    randomBtn.toggleClass('active', player.random); // Thêm/xóa class active để highlight nút random
+                    if (!player.repeat && player.random) {
+                        player.on('ended', () => {
+                            playRandomSong();
+                        });
+                    }
+                });
+        </script>
+    </body>
+</html>
