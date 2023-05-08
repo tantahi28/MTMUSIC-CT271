@@ -5,7 +5,7 @@
     <form method="POST" action="/auth/store">
      {{#if conflictError}}
             <div class="alert alert-danger">{{conflictError}}</div>
-        {{/if}}
+    {{/if}}
         <div class="form-group">
             <label for="email">Nhập email:</label>
             <input type="email" class="form-control form-control-lg rounded" id="email" name="email" value="{{email}}" required>
@@ -24,7 +24,7 @@
             <input type="text" class="form-control form-control-lg rounded" id="name" name="name" required>
         </div>
         <div class="form-group">
-            <label for="urlAvt">Nhập đường dẫn hình ảnh cho avt:</label>
+            <label for="urlAvt">Nhập đường dẫn hình ảnh cho ảnh đại diện:</label>
             <input type="text" maxlength="15" class="form-control form-control-lg rounded" id="urlAvt" name="urlAvt">
         </div>
         <button type="submit" class="btn btn-primary">Đăng ký</button>

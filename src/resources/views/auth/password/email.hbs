@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="mt-4">
+        <h3 class="text-center">Quên mật khẩu</h3>
+        <form method="POST" action="/auth/password/email">
+        {{#if conflictError}}
+            <div class="alert alert-danger" role="alert">
+                {{conflictError}}
+            </div>
+        {{/if}}
+
+        {{#if successMes}}
+            <div class="alert alert-success" role="alert">
+                {{successMes}} 
+            </div>
+        {{/if}}
+            <div class="form-group">
+                <label for="email">Nhập email </label>
+                <input type="email" class="form-control form-control-lg rounded" value="{{email}}" id="email" name="email" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">Chúng tôi sẽ không tiếc lộ email của bạn cho bất cứ ai!</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Xác thực</button>
+        </form>
+    </div>
+</div>

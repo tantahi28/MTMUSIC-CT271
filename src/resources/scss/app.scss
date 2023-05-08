@@ -66,6 +66,7 @@ a:hover {
     font-size: 1.6rem;
 }
 .logo__img {
+    border-radius: 5px;
     width: 80px;
     height: 80px;
 }
@@ -85,14 +86,12 @@ a:hover {
     text-align: center;
     background-color: var(--primary-color);
     :hover {
-        color: #fff!important;
-        background-color: var(--text-item-hover)!important;
-
+        color: #fff !important;
+        background-color: var(--text-item-hover) !important;
     }
 
     a {
-        color: #fff!important;
-
+        color: #fff !important;
     }
 }
 .nav__list-item-link {
@@ -131,6 +130,18 @@ a:hover {
     height: 100vh;
     overflow: overlay;
 }
+
+/* Đổi màu scrollbar */
+.site-main::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+}
+
+/* Định dạng phần nút cuộn */
+.site-main::-webkit-scrollbar-thumb {
+    background-color: rgba($color: #0e8080, $alpha: 0.3);
+}
+
 .site-right {
     z-index: 999;
     height: 100vh;
@@ -148,8 +159,8 @@ a:hover {
     background-color: $background-color_5;
 }
 .header__tool-noti {
-    font-size: 2.5rem;
     button {
+        font-size: 2rem;
         color: $color_2;
     }
 }
@@ -183,7 +194,7 @@ a:hover {
     a {
         color: $color_4 !important;
     }
-    :hover{
+    :hover {
         cursor: pointer;
         background: var(--text-item-hover);
     }
@@ -195,8 +206,6 @@ a:hover {
     padding: 5px;
     background: var(--primary-color);
     border-radius: 10px;
-
-    
 }
 
 .header__info-username {
@@ -216,7 +225,8 @@ a:hover {
     border-radius: 1.5rem;
 }
 .dashboard {
-    min-width: 287px;
+    min-width: 225px;
+    max-width: 280px;
     background-color: $background-color_7;
     // box-shadow: 0px 1px 11px 1px rgb(0 0 0 / 10%);
     border-radius: 1.5rem;
@@ -227,7 +237,7 @@ a:hover {
 .artist {
     font-size: 1.2rem;
 }
-.cd__thumb {    
+.cd__thumb {
     position: relative;
     padding-top: 100%;
     padding-right: 100%;
@@ -283,12 +293,11 @@ a:hover {
         color: $color_1;
         font-weight: 100;
     }
-    
 }
 
 .music__list:hover {
-        background-color: #fff;
-        cursor: pointer;
+    background-color: #fff;
+    cursor: pointer;
 }
 .list__song {
     display: flex;
@@ -337,8 +346,6 @@ a:hover {
     width: 90%;
     position: relative;
 }
-
-
 
 .plyr__controls {
     width: 100%;
@@ -462,23 +469,22 @@ a:hover {
 
 .media {
     padding: 0 !important;
-    border-radius: 5px;    
+    border-radius: 5px;
 }
 
 .media:hover {
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: rgba($color: #fff, $alpha: 0.6);
-        .media-icon {
-            display: block;
-            z-index: 99;
-            position: absolute;
-            color: #a4adc6;
-            font-size: 2rem;
-            right: 8%;
-            top: 25%;
-        }
-    
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    .media-icon {
+        display: block;
+        z-index: 99;
+        position: absolute;
+        color: #a4adc6;
+        font-size: 2rem;
+        right: 8%;
+        top: 25%;
+    }
 }
 
 .media-container {
@@ -518,23 +524,18 @@ a:hover {
     padding: 0 0 0 1.2rem;
 }
 
-
-
-
-
-
-
-
 //RESPONSIVE
 
 /* Tablet and Mobile */
-@media(max-width: 1023px) {
-  
-  }
-  
-  
-  /* Mobile */
-  @media(max-width: 739px) {
- 
-    
-  }
+@media (max-width: 1023px) {
+    .dashboard {
+        background-color: red;
+    }
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+    .dashboard {
+        background-color: green;
+    }
+}

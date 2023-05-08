@@ -4,16 +4,15 @@ const { mongooseToObject } = require('../../util/mongoose');
 const session = require('express-session');
 const User = require('../models/User');
 
-
 class SiteController {
     //[GET] /
     index(req, res) {
-        const user = req.session.user
+        const user = req.session.user;
         Song.find({})
             .then((songs) => {
                 res.render('root', {
                     songs: mutipleMongooseToObject(songs),
-                    user: user
+                    user: user,
                 });
             })
             .catch((err) => {
@@ -39,8 +38,6 @@ class SiteController {
                 res.status(400).json({ error: 'ERROR..!!!' });
             });
     }
-
-    
 }
 
 module.exports = new SiteController();

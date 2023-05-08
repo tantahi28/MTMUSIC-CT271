@@ -28,7 +28,7 @@ class SongController {
             .then((song) => {
                 res.render('songs/show', {
                     song: mongooseToObject(song),
-                    user: req.session.user
+                    user: req.session.user,
                 });
             })
             .catch(next);
@@ -39,7 +39,7 @@ class SongController {
     //[GET] /songs/create
     create(req, res, next) {
         res.render('songs/create', {
-            user: req.session.user
+            user: req.session.user,
         });
     }
 
@@ -80,7 +80,7 @@ class SongController {
             .then((song) =>
                 res.render('songs/edit', {
                     song: mongooseToObject(song),
-                    user: req.session.user
+                    user: req.session.user,
                 }),
             )
             .catch(next);
@@ -179,8 +179,6 @@ class SongController {
             })
             .catch((error) => next(error));
     }
-
-    
 
     //[DELETE] /songs/:id/force
     forceDelete(req, res, next) {

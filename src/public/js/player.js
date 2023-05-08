@@ -13,6 +13,7 @@ const prevBtn = $('.ctrl__btn--prev');
 const randomBtn = $('.ctrl__btn--random');
 const btnRepeat = $('.ctrl__btn--repeat');
 const playList = $('.playlist');
+const headingGenre = $('.heading-genre');
 const player = new Plyr('#myAudio', {
     controls: [
         'play',
@@ -58,14 +59,11 @@ let playlist = [];
 let currentSongIndex = -1;
 // player.off('download');
 
-
-
 function getSongInfo(songId) {
     $.ajax({
         type: 'GET',
         url: '/api/songs/id/' + songId,
         success: function (data) {
-            
             heading.text(data.songName);
             $('.artist').text(data.singerName);
             $('#myAudio').attr('src', data.urlSong);
@@ -83,6 +81,7 @@ function getSongInfo(songId) {
             currentSongIndex = data._id;
             // Lấy thể loại của bài hát
             var songGenre = data.genre;
+            headingGenre.text("Bạn đang nghe thể loại nhạc " + songGenre.toUpperCase());
 
             // Gửi yêu cầu lấy danh sách các bài hát cùng thể loại
             $.ajax({
@@ -107,16 +106,12 @@ function getSongInfo(songId) {
     });
 }
 
-
-
-
-
-
-
 function renderPlaylist() {
     let songList = '';
     // Lấy thông tin bài hát đang phát từ Session Storage
-    const currentSongInfo = JSON.parse(sessionStorage.getItem('currentSongInfo'));
+    const currentSongInfo = JSON.parse(
+        sessionStorage.getItem('currentSongInfo'),
+    );
     // Render danh sách bài hát cùng thể loại
     for (let i = 0; i < playlist.length; i++) {
         let song = playlist[i];
@@ -124,7 +119,9 @@ function renderPlaylist() {
         <div class="music__list" data-songId='${
             song._id
         }' onclick="getSongInfo('${song._id}')">
-            <div class="list__song ${song._id === currentSongInfo._id ? 'active' : ''}">
+            <div class="list__song ${
+                song._id === currentSongInfo._id ? 'active' : ''
+            }">
                 <div style="background-image: url(${
                     song.urlImg
                 })" class="list__thumb"></div>
@@ -142,12 +139,11 @@ function renderPlaylist() {
     playList.html(songList);
 }
 
-  
-
-
-document.querySelector('.media-right').addEventListener('click', function(event) {
-    event.stopPropagation(); // Ngăn chặn sự kiện click từ bubble lên các phần tử cha
-  });
+document
+    .querySelector('.media-right')
+    .addEventListener('click', function (event) {
+        event.stopPropagation(); // Ngăn chặn sự kiện click từ bubble lên các phần tử cha
+    });
 
 function playNextSong() {
     if (player.random) {
@@ -165,7 +161,6 @@ function playNextSong() {
     }
 }
 
-
 function playPrevSong() {
     if (currentSongIndex > 0) {
         currentSongIndex--;
@@ -177,8 +172,6 @@ function playPrevSong() {
         getSongInfo(prevSong._id);
     }
 }
-
-
 
 //Xử lý CD quay và dừng
 
